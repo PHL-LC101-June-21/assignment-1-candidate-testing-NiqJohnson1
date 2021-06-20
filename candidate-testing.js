@@ -9,12 +9,11 @@ let question = "1. Who was the first American woman in space? "
 let correctAnswer = "Sally Ride";
 let candidateAnswer = (" ");
 let questions = [
-  "Who was the first American woman in space?",
-  "True or false: 5 kilometer == 5000 meters?",
-  "(5 + 3)/2 * 10 = ?",
-  "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2?",
-  "What is the minimum crew size for the ISS?"
-  ];
+  "1. Who was the first American woman in space?\n",
+  "2. True or false: 5 kilometer == 5000 meters?",
+  "3. (5 + 3)/2 * 10 = ?"
+]
+  ;
 let correctAnswers = [
   "Sally Ride", 
   "true",
@@ -22,7 +21,7 @@ let correctAnswers = [
   "Trajectory",
   "3"
 ]; 
-let candidateAnswers;
+let candidateAnswers = [" "];
 
 
 function askForName() {
@@ -37,11 +36,23 @@ function askQuestion() {
   // Candidate Answer is equal to the input from question
  
 
- candidateAnswer = input.question(question)
-
-console.log("Your Answer:", candidateAnswer);
+ candidateAnswer = input.question(questions[0])
+ console.log("Your Answer:", candidateAnswer);
 console.log("Correct Answer:", correctAnswer);
 
+ candidateAnswer = input.question(questions[1])
+console.log("Your Answer:", candidateAnswer);
+console.log("Correct Answer:", correctAnswers[1]);
+
+ candidateAnswer = input.question(questions[2])
+console.log("Your Answer:", candidateAnswer);
+console.log("Correct Answer:", correctAnswers[2]);
+
+//assign a for loop that asks each question in the question variable//
+candidateAnswers = input.question(questions)
+for (i = questions[0]; candidateAnswers == correctAnswers; i++){
+  console.log(questions[i])
+}
 }
 
 function gradeQuiz(candidateAnswers) {
@@ -51,7 +62,7 @@ function gradeQuiz(candidateAnswers) {
   //if the candidate's answer matches the correct answer, print "Yes, you are correct"
   //Otherwise if the candidate's answer is incorrect, print "Incorrect answer"
 
-if (candidateAnswer == correctAnswer) {
+if (candidateAnswers == correctAnswers) {
   console.log("Yes you are correct!");
 }
 else  {
