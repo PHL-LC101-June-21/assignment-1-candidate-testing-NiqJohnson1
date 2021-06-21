@@ -9,9 +9,11 @@ let question = "1. Who was the first American woman in space? "
 let correctAnswer = "Sally Ride";
 let candidateAnswer = (" ");
 let questions = [
-  "1. Who was the first American woman in space?\n",
-  "2. True or false: 5 kilometer == 5000 meters?",
-  "3. (5 + 3)/2 * 10 = ?"
+  "1. Who was the first American woman in space? \n",
+  "\n2. True or false: 5 kilometer == 5000 meters? ",
+  "\n3. (5 + 3)/2 * 10 = ? ",
+  "\n4. Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ",
+  "\n5. What is the minimum crew size for the ISS?"
 ]
   ;
 let correctAnswers = [
@@ -21,7 +23,7 @@ let correctAnswers = [
   "Trajectory",
   "3"
 ]; 
-let candidateAnswers = [" "];
+let candidateAnswers = [""];
 
 
 function askForName() {
@@ -34,19 +36,31 @@ const input = require('readline-sync')
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   // Candidate Answer is equal to the input from question
- 
 
- candidateAnswer = input.question(questions[0])
- console.log("Your Answer:", candidateAnswer);
-console.log("Correct Answer:", correctAnswer);
 
- candidateAnswer = input.question(questions[1])
-console.log("Your Answer:", candidateAnswer);
-console.log("Correct Answer:", correctAnswers[1]);
+candidateAnswers = input.question(questions[0])
+console.log(`Your Answer: ${candidateAnswers}`);
+console.log(`Correct Answer: ${correctAnswers[0]}`);
 
- candidateAnswer = input.question(questions[2])
-console.log("Your Answer:", candidateAnswer);
-console.log("Correct Answer:", correctAnswers[2]);
+candidateAnswers = input.question(questions[1])
+console.log(`Your Answer: ${candidateAnswers}`);
+console.log(`Correct Answer: ${correctAnswers[1]}`);
+
+candidateAnswers = input.question(questions[2])
+console.log(`Your Answer: ${candidateAnswers}`);
+console.log(`Correct Answer: ${correctAnswers[2]}`);
+
+candidateAnswers = input.question(questions[3])
+console.log(`Your Answer: ${candidateAnswers}`);
+console.log(`Correct Answer: ${correctAnswers[3]}`);
+
+candidateAnswers = input.question(questions[4])
+console.log(`Your Answer: ${candidateAnswers}`);
+console.log(`Correct Answer: ${correctAnswers[4]}`);
+
+candidateAnswers = input.question(questions[5])
+console.log(`Your Answer: ${candidateAnswers}`);
+console.log(`Correct Answer: ${correctAnswers[5]}`);
 
 //assign a for loop that asks each question in the question variable//
 candidateAnswers = input.question(questions)
@@ -63,7 +77,7 @@ function gradeQuiz(candidateAnswers) {
   //Otherwise if the candidate's answer is incorrect, print "Incorrect answer"
 
 if (candidateAnswers == correctAnswers) {
-  console.log("Yes you are correct!");
+ 
 }
 else  {
     console.log("Incorrect answer");
