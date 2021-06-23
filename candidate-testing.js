@@ -9,21 +9,21 @@ let question = "1. Who was the first American woman in space? "
 let correctAnswer = "Sally Ride";
 let candidateAnswer = (" ");
 let questions = [
-  "1. Who was the first American woman in space? \n",
-  "\n2. True or false: 5 kilometer == 5000 meters? ",
-  "\n3. (5 + 3)/2 * 10 = ? ",
-  "\n4. Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ",
-  "\n5. What is the minimum crew size for the ISS?"
+  ['1) Who was the first American woman in space? '],
+  ['2) True or false: 5 kilometer == 5000 meters? '],
+  ['3) (5 + 3)/2 * 10 = ? '],
+  ["4) Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? "],
+  ['5) What is the minimum crew size for the ISS? ']
 ]
   ;
 let correctAnswers = [
-  "Sally Ride", 
-  "true",
-  "40",
-  "Trajectory",
-  "3"
+  ['Sally Ride'], 
+  ['true'],
+  ['40'],
+  ['Trajectory'],
+  ['3']
 ]; 
-let candidateAnswers = [""];
+let candidateAnswers = [];
 
 
 function askForName() {
@@ -35,63 +35,58 @@ const input = require('readline-sync')
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  // Candidate Answer is equal to the input from question
 
 
-candidateAnswers = input.question(questions[0])
-console.log(`Your Answer: ${candidateAnswers}`);
-console.log(`Correct Answer: ${correctAnswers[0]}`);
+//Assign a for loop that asks each question in the question variable//
 
-candidateAnswers = input.question(questions[1])
-console.log(`Your Answer: ${candidateAnswers}`);
-console.log(`Correct Answer: ${correctAnswers[1]}`);
 
-candidateAnswers = input.question(questions[2])
-console.log(`Your Answer: ${candidateAnswers}`);
-console.log(`Correct Answer: ${correctAnswers[2]}`);
-
-candidateAnswers = input.question(questions[3])
-console.log(`Your Answer: ${candidateAnswers}`);
-console.log(`Correct Answer: ${correctAnswers[3]}`);
-
-candidateAnswers = input.question(questions[4])
-console.log(`Your Answer: ${candidateAnswers}`);
-console.log(`Correct Answer: ${correctAnswers[4]}`);
-
-candidateAnswers = input.question(questions[5])
-console.log(`Your Answer: ${candidateAnswers}`);
-console.log(`Correct Answer: ${correctAnswers[5]}`);
-
-//assign a for loop that asks each question in the question variable//
-candidateAnswers = input.question(questions)
-for (i = questions[0]; candidateAnswers == correctAnswers; i++){
-  console.log(questions[i])
+for (i = 0; i < questions.length; i++){
+candidateAnswers.push(input.question(questions[i]))
+console.log(`Your Answer: ${candidateAnswers[i]}`);
+console.log(`Correct Answer: ${correctAnswers[i]}\n`);    
 }
+
+
 }
 
 function gradeQuiz(candidateAnswers) {
+
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
 
   //if the candidate's answer matches the correct answer, print "Yes, you are correct"
   //Otherwise if the candidate's answer is incorrect, print "Incorrect answer"
+// *** PART 3 ***
+// Compare the candidate answers with the correct answers,
+// Calculate the candidate's score as a percentage,
+// Convey to the candidate if they have passed the quiz with an 80% or if they have failed.
+// Some tips:
 
-if (candidateAnswers == correctAnswers) {
+// Checking for the correct answer should be case insensitive (e.g. "Orbit" is the same as "orbit").
+
+// Somewhere below TODO 1.2c you should see a variable declaration for grade. Use this to calculate the candidate's score.
+
+// To calculate the candidate's percentage, use the equation:
+
+// (Number of Correct Answers) / (Number of Quiz Questions) * 100
+
+  let grade = (candidateAnswers.length / questions.length) * 100
  
-}
-else  {
-    console.log("Incorrect answer");
+  grade = (Number(candidateAnswers.length / questions.length) * 100);
+ let totalCorrect = grade
+  if (candidateAnswers == questions.length ){
   }
-  let grade;
-  
+   console.log(`>>> Overall Grade: ${grade}%  (${candidateAnswers.length} out of ${questions.length} correct)`)
 
+  
   return grade;
 }
-
+  
+  
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
-      console.log("Hello ", candidateName);
+      console.log("Candidate Name: ", candidateName);
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
