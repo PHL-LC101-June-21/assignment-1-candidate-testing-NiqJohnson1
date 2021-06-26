@@ -24,28 +24,29 @@ let correctAnswers = [
   ['3']
 ]; 
 let candidateAnswers = [];
-
+let numberOfCorrectAnswers = 0;
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-const input = require('readline-sync')
- const name = input.question("What is your name? ")
- candidateName = name
+  const input = require('readline-sync')
+  const name = input.question("What is your name? ")
+  candidateName = name
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
 
+  //Assign a for loop that asks each question in the question variable//
+  for (i = 0; i < questions.length; i++){
+    const candidateAnswer = 
+    candidateAnswers.push(input.question(questions[i]))
+    // if (input.question(questions[i]) === candidateAnswers[i]){
+    //   numberOfCorrectAnswers++
+    // }
 
-//Assign a for loop that asks each question in the question variable//
-
-
-for (i = 0; i < questions.length; i++){
-candidateAnswers.push(input.question(questions[i]))
-console.log(`Your Answer: ${candidateAnswers[i]}`);
-console.log(`Correct Answer: ${correctAnswers[i]}\n`);    
-}
-
+    console.log(`Your Answer: ${candidateAnswers[i]}`);
+    console.log(`Correct Answer: ${correctAnswers[i]}\n`);    
+  }
 
 }
 
@@ -56,28 +57,40 @@ function gradeQuiz(candidateAnswers) {
 
   //if the candidate's answer matches the correct answer, print "Yes, you are correct"
   //Otherwise if the candidate's answer is incorrect, print "Incorrect answer"
-// *** PART 3 ***
-// Compare the candidate answers with the correct answers,
-// Calculate the candidate's score as a percentage,
-// Convey to the candidate if they have passed the quiz with an 80% or if they have failed.
-// Some tips:
+  // *** PART 3 ***
+  // Compare the candidate answers with the correct answers,
+  // Calculate the candidate's score as a percentage,
+  // Convey to the candidate if they have passed the quiz with an 80% or if they have failed.
+  // Some tips:
 
-// Checking for the correct answer should be case insensitive (e.g. "Orbit" is the same as "orbit").
+  // Checking for the correct answer should be case insensitive (e.g. "Orbit" is the same as "orbit").
 
-// Somewhere below TODO 1.2c you should see a variable declaration for grade. Use this to calculate the candidate's score.
+  // Somewhere below TODO 1.2c you should see a variable declaration for grade. Use this to calculate the candidate's score.
 
-// To calculate the candidate's percentage, use the equation:
+  // To calculate the candidate's percentage, use the equation:
 
-// (Number of Correct Answers) / (Number of Quiz Questions) * 100
+  // (Number of Correct Answers) / (Number of Quiz Questions) * 100
+  console.log(candidateAnswers)
+  console.log(correctAnswers)
 
-  let grade = (candidateAnswers.length / questions.length) * 100
- 
-  grade = (Number(candidateAnswers.length / questions.length) * 100);
- let totalCorrect = grade
-  if (candidateAnswers == questions.length ){
+  let grade = (Number(numberOfCorrectAnswers / questions.length) * 100);
+  // let grade = ((candidateAnswers) / (questions.length)) * 100
+  let candidateTotalPercentage = grade;
+
+  if (candidateAnswers[i] === correctAnswers[i]){
+   
   }
-   console.log(`>>> Overall Grade: ${grade}%  (${candidateAnswers.length} out of ${questions.length} correct)`)
+  console.log(`>>> Overall Grade: ${grade}%  (${candidateAnswers.length} out of ${questions.length} correct)`)
 
+  //Any score < 80% is a failing grade
+  let candidateStatus = 80
+  if (candidateTotalPercentage < candidateStatus){
+    console.log(">>>Status: FAILED <<<")
+  }
+  else if (candidateTotalPercentage < candidateStatus){
+     
+     console.log(">>>Status: PASSED <<<")
+  }   
   
   return grade;
 }
@@ -86,7 +99,7 @@ function gradeQuiz(candidateAnswers) {
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
-      console.log("Candidate Name: ", candidateName);
+  console.log("Candidate Name: ", candidateName);
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
