@@ -9,19 +9,19 @@ let question = "1. Who was the first American woman in space? "
 let correctAnswer = "Sally Ride";
 let candidateAnswer = (" ");
 let questions = [
-  ['1) Who was the first American woman in space? '],
-  ['2) True or false: 5 kilometer == 5000 meters? '],
-  ['3) (5 + 3)/2 * 10 = ? '],
-  ["4) Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? "],
-  ['5) What is the minimum crew size for the ISS? ']
+  '1) Who was the first American woman in space? ',
+  '2) True or false: 5 kilometer == 5000 meters? ',
+  '3) (5 + 3)/2 * 10 = ? ',
+  "4) Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ",
+  '5) What is the minimum crew size for the ISS? '
 ]
   ;
 let correctAnswers = [
-  ['Sally Ride'], 
-  ['true'],
-  ['40'],
-  ['Trajectory'],
-  ['3']
+  'Sally Ride', 
+  'true',
+  '40',
+  'Trajectory',
+  '3'
 ]; 
 let candidateAnswers = [];
 let numberOfCorrectAnswers = 0;
@@ -38,14 +38,20 @@ function askQuestion() {
 
   //Assign a for loop that asks each question in the question variable//
   for (i = 0; i < questions.length; i++){
-    const candidateAnswer = 
-    candidateAnswers.push(input.question(questions[i]))
-    // if (input.question(questions[i]) === candidateAnswers[i]){
-    //   numberOfCorrectAnswers++
-    // }
-
+    
+    const candidateAns = input.question(questions[i])
+    const correctAns = correctAnswers[i]
+    candidateAnswers.push(candidateAns)
+     
+      console.log(candidateAns === correctAns)
+      if (candidateAns === correctAns){
+      numberOfCorrectAnswers++
+    console.log(numberOfCorrectAnswers)
+    } 
     console.log(`Your Answer: ${candidateAnswers[i]}`);
-    console.log(`Correct Answer: ${correctAnswers[i]}\n`);    
+    console.log(`Correct Answer: ${correctAns}\n`);    
+    
+    
   }
 
 }
@@ -75,22 +81,20 @@ function gradeQuiz(candidateAnswers) {
 
   let grade = (Number(numberOfCorrectAnswers / questions.length) * 100);
   // let grade = ((candidateAnswers) / (questions.length)) * 100
-  let candidateTotalPercentage = grade;
 
   if (candidateAnswers[i] === correctAnswers[i]){
    
   }
-  console.log(`>>> Overall Grade: ${grade}%  (${candidateAnswers.length} out of ${questions.length} correct)`)
+  console.log(`>>> Overall Grade: ${grade}%  (${numberOfCorrectAnswers} out of ${questions.length} correct)`)
 
   //Any score < 80% is a failing grade
   let candidateStatus = 80
-  if (candidateTotalPercentage < candidateStatus){
+  if (grade <= candidateStatus){
     console.log(">>>Status: FAILED <<<")
-  }
-  else if (candidateTotalPercentage < candidateStatus){
-     
+  }   else {
+  
      console.log(">>>Status: PASSED <<<")
-  }   
+}   
   
   return grade;
 }
