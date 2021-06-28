@@ -39,15 +39,16 @@ function askQuestion() {
   //Assign a for loop that asks each question in the question variable//
   for (i = 0; i < questions.length; i++){
     
-    const candidateAns = input.question(questions[i])
-    const correctAns = correctAnswers[i]
-    candidateAnswers.push(candidateAns)
-     
-      console.log(candidateAns === correctAns)
-      if (candidateAns === correctAns){
+    const candidateAns = input.question(questions[i]);
+    const correctAns = correctAnswers[i];
+   
+    candidateAnswers.push(candidateAns);
+  
+    
+      if (candidateAns.toLowerCase() === correctAns.toLowerCase()){
       numberOfCorrectAnswers++
-    console.log(numberOfCorrectAnswers)
-    } 
+  
+        } 
     console.log(`Your Answer: ${candidateAnswers[i]}`);
     console.log(`Correct Answer: ${correctAns}\n`);    
     
@@ -76,24 +77,23 @@ function gradeQuiz(candidateAnswers) {
   // To calculate the candidate's percentage, use the equation:
 
   // (Number of Correct Answers) / (Number of Quiz Questions) * 100
-  console.log(candidateAnswers)
-  console.log(correctAnswers)
+  
 
   let grade = (Number(numberOfCorrectAnswers / questions.length) * 100);
   // let grade = ((candidateAnswers) / (questions.length)) * 100
 
   if (candidateAnswers[i] === correctAnswers[i]){
    
-  }
+    }
   console.log(`>>> Overall Grade: ${grade}%  (${numberOfCorrectAnswers} out of ${questions.length} correct)`)
 
   //Any score < 80% is a failing grade
   let candidateStatus = 80
-  if (grade <= candidateStatus){
-    console.log(">>>Status: FAILED <<<")
+  if (grade < candidateStatus){
+    console.log(">>> Status: FAILED <<<")
   }   else {
   
-     console.log(">>>Status: PASSED <<<")
+     console.log(">>> Status: PASSED <<<")
 }   
   
   return grade;
