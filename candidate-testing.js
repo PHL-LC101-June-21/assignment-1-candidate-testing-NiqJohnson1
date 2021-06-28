@@ -64,7 +64,7 @@ function gradeQuiz(candidateAnswers) {
 
   //if the candidate's answer matches the correct answer, print "Yes, you are correct"
   //Otherwise if the candidate's answer is incorrect, print "Incorrect answer"
-  // *** PART 3 ***
+  
   // Compare the candidate answers with the correct answers,
   // Calculate the candidate's score as a percentage,
   // Convey to the candidate if they have passed the quiz with an 80% or if they have failed.
